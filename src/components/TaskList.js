@@ -13,20 +13,20 @@ let posts = [{
 	name: 'get in bed'
 }];
 
-const TaskList = () => {
+const TaskList = (props) => {
 	posts = posts.map( (post) => (
 		post =
-		<li>
-			{post.name}
-			<label for="done">
-				<input type="checkbox" for="done" />
+		<li id={ post.key } className="todo-item">
+			{ post.name }
+			<label htmlFor={ post.key }>
+				<input type="checkbox" htmlFor="done" />
 				Done?
 			</label>
 		</li>
 	));
 
 	return (
-		<ul>
+		<ul className="todo-list">
 			{ posts }
 		</ul>
 	);

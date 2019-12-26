@@ -3,8 +3,8 @@ import React from 'react';
 const Heading = () => {
 	return (
 		<div>
-			<h1>Todo List</h1>
-			<h3>Create New Todo</h3>
+			<h1>Simple Todo List</h1>
+			<h3>Create New Todo Item</h3>
 		</div>
 	);
 }
