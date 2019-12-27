@@ -2,12 +2,20 @@ import React from 'react';
 import TaskList from './TaskList';
 
 class InputBox extends React.Component {
-	// function getNewItem() {
-	// 	e.preventDefault();
-	// 	let newItem = document.getElementById('add-item-field').value;
-	// 	console.log(newItem);
-	// 	return newItem;
-	// };
+	constructor() {
+		super();
+		this.state = {
+			todos: []
+		};
+	}
+
+	getNewItem(e) {
+		e.preventDefault();
+		let newItem = document.getElementById('add-item-field').value;
+		console.log(newItem);
+		// this.setState({ content: this.state})
+		return newItem;
+	};
 
 	render() {
 		return (
@@ -17,11 +25,11 @@ class InputBox extends React.Component {
 					<input id="add-item-field" name="todoItem" type="text" />
 				</label>
 				<button
-					// onClick={ getNewItem }
-					>
+					onClick={ this.getNewItem } >
 					Add Item
 				</button>
-				<TaskList />
+				<TaskList
+					content={this.state.content}	/>
 			</div>
 		);
 	}
