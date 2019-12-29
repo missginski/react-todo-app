@@ -1,6 +1,6 @@
 import React from 'react';
 
-// let posts = [{
+// const oldTasks = [{
 // 	key: 1,
 // 	name: 'brush hair'
 // },
@@ -10,37 +10,31 @@ import React from 'react';
 // },
 // 	{
 // 	key: 3,
-// 	name: 'get in bed'
+// 	name: 'go to bed'
 // }];
 
-let posts = ['brush hair', 'clean room', 'get in bed']
-
 class TaskList extends React.Component {
-	constructor (props) {
-		super (props);
-		this.state = {
-			content: this.props.conent
-		};
+	createTasks(task) {
+		return (
+			<li className="todo-item">
+				{ task.name }
+				<label>
+					<input type="checkbox" htmlFor="done" />
+					Done?
+				</label>
+			</li>
+		)
 	}
-
-	posts = posts.map( (post) => (
-		post =
-		<li className="todo-item">
-			{ post }
-			<label>
-				<input type="checkbox" htmlFor="done" />
-				Done?
-			</label>
-		</li>
-	));
-
 	render() {
+		let listEntries = this.props.entries;
+		let listItems = listEntries.map(this.createTasks);
+
 		return (
 			<ul className="todo-list">
-				{ this.state.content }
+				{ listItems }
 			</ul>
 		);
 	}
-}
+};
 
 export default TaskList;
