@@ -2,37 +2,49 @@ import React from 'react';
 import TaskList from './TaskList';
 
 class InputBox extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			todos: []
+			tasks: []
 		};
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	getNewItem(e) {
+	handleSubmit(e) {
+		let inputVal = document.getElementById('add-item-field').value;
+		if (inputVal !== '') {
+			let newItem = {
+				name: inputVal
+			};
+			this.setState((prevState) => {
+				return {
+					tasks: prevState.tasks.concat(newItem)
+				};
+			});
+			this.inputVal = '';
+		}
+		console.log(this.state.tasks)
 		e.preventDefault();
-		let newItem = document.getElementById('add-item-field').value;
-		console.log(newItem);
-		// this.setState({ content: this.state})
-		return newItem;
-	};
+	}
 
 	render() {
 		return (
 			<div>
-				<label htmlFor="todoItem">
-					Enter an item to add it to the list:
-					<input id="add-item-field" name="todoItem" type="text" />
-				</label>
-				<button
-					onClick={ this.getNewItem } >
-					Add Item
-				</button>
-				<TaskList
-					content={this.state.content}	/>
+				<form onSubmit={ this.handleSubmit }>
+					<label htmlFor="todoItem">
+						Enter an item:
+						<input
+							id="add-item-field"
+							name="todoItem"
+							type="text"
+						/>
+					</label>
+					<button>Add Item</button>
+				</form>
+				<TaskList entries={ this.state.tasks } />
 			</div>
 		);
 	}
-}
+};
 
 export default InputBox;
