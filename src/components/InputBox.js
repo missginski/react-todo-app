@@ -21,7 +21,7 @@ class InputBox extends React.Component {
 					tasks: prevState.tasks.concat(newItem)
 				};
 			});
-			this.inputVal = '';
+			inputVal = '';
 		}
 		console.log(this.state.tasks)
 		e.preventDefault();
@@ -32,7 +32,7 @@ class InputBox extends React.Component {
 			<div>
 				<form onSubmit={ this.handleSubmit }>
 					<label htmlFor="todoItem">
-						Enter an item:
+						{/* Enter an item: */}
 						<input
 							id="add-item-field"
 							name="todoItem"

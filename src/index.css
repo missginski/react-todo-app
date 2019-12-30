@@ -1,13 +1,35 @@
 body {
   margin: 0;
-  padding: 50px;
+  /* padding: 50px; */
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 #root {
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+.app {
+  background: #457B9D;
+  padding: 30px;
+  max-width: 280px;
+  border-radius: 10px;
+  border: 3px solid #F1FAEE;
+}
+
+.todo-list {
+  padding: 0;
+}
+
+.todo-item {
+  list-style: none;
+  padding: 10px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
 }
